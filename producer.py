@@ -7,7 +7,7 @@ import uvloop
 asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 loop = asyncio.get_event_loop()
-RECORDS = 86000
+RECORDS = 10
 
 async def add_message_with_sleep(redis, loop, stream):
     start = time.time()
@@ -18,8 +18,9 @@ async def add_message_with_sleep(redis, loop, stream):
         fields = {'temperature': temperature.encode('utf-8'),
                   'humidity': humidity.encode('utf-8')}
         await redis.xadd(stream, fields)
+        print(_)
     end = time.time()
-    print(f"Inserting {RECORDS} records took {end - start} seconds")
+    print("Inserting {RECORDS} records took {end - start} seconds",end-start)
 
 async def main():
     redis = await aioredis.create_redis('redis://localhost', loop=loop)
