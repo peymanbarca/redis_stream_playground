@@ -9,11 +9,7 @@ Code for [my post](https://tirkarthi.github.io/programming/2018/08/21/redis-stre
 
 * Clone the repo
 * Activate virtualenv and install requirements with `pip install -r requirements.txt`
+* to instantiate redis node, run `docker-compose up -d`   
 * To injest data `python producer.py`
 * To start a consumer `python consumer.py <consumer_name>`
 
-### License
-
-Copyright © 2018 Karthikeyan S
-
-Distributed under the MIT License
